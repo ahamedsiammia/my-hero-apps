@@ -38,7 +38,7 @@ const Navber = () => {
     </ul>
   </div>
   <div className="navbar-end text-white">
-    <NavLink ><button className='bg-gradient-to-l from-[#9f62f2] to-[#632ee3] flex rounded-lg gap-2 p-2'> <img src="/github.png" alt="" />Contribute</button></NavLink>
+    <NavLink to="https://github.com/ahamedsiammia/my-hero-apps.git"><button className='bg-gradient-to-l from-[#9f62f2] to-[#632ee3] flex rounded-lg gap-2 p-2'> <img src="/github.png" alt="" />Contribute</button></NavLink>
   </div>
 </div>
     );

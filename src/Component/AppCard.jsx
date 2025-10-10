@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { PiDownloadSimple } from 'react-icons/pi';
+import { Link } from 'react-router';
 
 const AppCard = ({app}) => {
     const {image,title,downloads,ratingAvg}=app;
