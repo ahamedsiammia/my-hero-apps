@@ -26,7 +26,7 @@ const Home = () => {
           <Link to="https://play.google.com/store/games?hl=en"><button className="btn ml-10">{<BiLogoPlayStore />} Google Play</button></Link>
           <Link to="https://www.apple.com/app-store/"><button className="btn ml-10">{<SiAppstore />}App Store</button></Link>
         </div>
-        <img src={} alt="" />
+        <img src="" alt="" />
       </div>
       
 
