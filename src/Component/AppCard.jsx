@@ -3,11 +3,14 @@ import { FaStar } from 'react-icons/fa';
 import { PiDownloadSimple } from 'react-icons/pi';
 import { Link } from 'react-router';
 
+
+
 const AppCard = ({app}) => {
-    const {image,title,downloads,ratingAvg}=app;
+    const {image,title,downloads,ratingAvg,id}=app;
     return (
         <div>
-            <div className='bg-green-100 shadow-sm hover:scale-105 transition ease-in-out p-4'>
+            <Link to={`/AppsDetailes/${id}`}>
+            <div  className='bg-green-100 shadow-sm hover:scale-105 transition ease-in-out p-4'>
                 <div className='h-[316px] overflow-hidden'>
                 <img className='w-full h-full object-cover rounded-xl' src={image} alt="" />
             </div>
@@ -25,6 +28,7 @@ const AppCard = ({app}) => {
                 </div>
             </div>
             </div>
+            </Link>
         </div>
     );
 };
