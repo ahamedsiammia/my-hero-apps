@@ -25,7 +25,7 @@ const Navber = () => {
     <Link className="btn btn-ghost text-xl"><img className='w-[40px] h-[40px]' src="/logo.png" alt="" />HERO.IO</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu menu-horizontal px-1 text-lg">
       <li>
             <NavLink to="/">Home</NavLink>
         </li>
