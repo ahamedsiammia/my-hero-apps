@@ -12,13 +12,16 @@ const Navber = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink className={({ isActive }) => isActive ?
+                    "text-green-500 underline":""} to="/">Home</NavLink>
         </li>
         <li>
-            <NavLink to="/Apps">Apps</NavLink>
+            <NavLink className={({ isActive }) => isActive ?
+                    "text-green-500 underline":""} to="/Apps">Apps</NavLink>
         </li>
         <li>
-            <NavLink to="/Installation">Installation</NavLink>
+            <NavLink className={({ isActive }) => isActive ?
+                    "text-green-500 underline":""} to="/Installation">Installation</NavLink>
         </li>
       </ul>
     </div>
@@ -27,13 +30,16 @@ const Navber = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 text-lg">
       <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink className={({ isActive }) => isActive ?
+                    "text-green-500 underline":""} to="/">Home</NavLink>
         </li>
         <li>
-            <NavLink to="/Apps">Apps</NavLink>
+            <NavLink className={({ isActive }) => isActive ?
+                    "text-green-500 underline":""} to="/Apps">Apps</NavLink>
         </li>
         <li>
-            <NavLink to="/Installation">Installation</NavLink>
+            <NavLink className={({ isActive }) => isActive ?
+                    "text-green-500 underline":""} to="/Installation">Installation</NavLink>
         </li>
     </ul>
   </div>

@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useApps from "./Hooks/useApps";
 import AppCard from "../Component/AppCard";
 import Loading from "./Loading";
+import { Link } from "react-router";
 
 const Apps = () => {
     const { Apps ,loading} = useApps();
     const [search,setSearch]=useState('');
+    const [searching,setSearching]=useState(false);
+    const [searchAppes,setSearchAppes]=useState(Apps);
     const term = search.trim().toLocaleLowerCase();
-    const searchAppes = search ? Apps.filter(App => App.title.toLocaleLowerCase().includes(term)): Apps
-  
+    // const searchAppes = search ? Apps.filter(App => App.title.toLocaleLowerCase().includes(term)): Apps
+  useEffect(()=>{
+    setSearching(true);
+    const timer =setTimeout(() => {
+      
+      const filtered =search
+    ?Apps.filter((app)=>app.title.toLocaleLowerCase().includes(term))
+    :Apps;
+    setSearchAppes(filtered);
+    setSearching(false);
+    }, 300);
+
+    return () =>clearTimeout(timer);
+  },[search,Apps,term]);
   return (
     <div>
       <div className="text-center mb-[50px]">
@@ -44,11 +59,21 @@ const Apps = () => {
           </label>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      { searching ?(<Loading></Loading>):
+       searchAppes.length > 0 ?<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {searchAppes.map((app) => (
           <AppCard key={app.id} app={app}></AppCard>
         ))}
+      </div>:
+      <div className="text-center">
+       <h1 className="text-4xl font-bold"> No Apps Found</h1>
+       <Link to="/">
+          <button className=" mt-5 text-white bg-gradient-to-l from-[#9f62f2] to-[#632ee3] rounded-lg p-3">
+            go home
+          </button>
+        </Link>
       </div>
+      }
       {loading && <Loading></Loading>}
     </div>
   );

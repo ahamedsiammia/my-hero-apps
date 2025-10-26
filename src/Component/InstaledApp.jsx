@@ -9,8 +9,8 @@ const InstaledApp = ({instal,setInstaled}) => {
     const existingList = JSON.parse(localStorage.getItem("install"));
     let updatedList = existingList.filter(a => a.id !== id)
     setInstaled(updatedList)
-    alert(`${title} Uninstall successfull `)
     localStorage.setItem("install", JSON.stringify(updatedList));
+     toast.success(`${title} Uninstall successfull `)
   };
 
     return (

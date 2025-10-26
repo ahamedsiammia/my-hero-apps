@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import InstaledApp from "../Component/InstaledApp";
+import Loading from "./Loading";
 const Installation = () => {
     const [Sort , setSort]=useState('');
-  const [instaled, setInstaled] = useState([]);
+  const [instaled, setInstaled,loading] = useState([]);
   
     
   
@@ -32,7 +33,9 @@ const Installation = () => {
         return instaled
     }
   }
-
+if(loading){
+  return <Loading></Loading>
+}
 
   return (
     <div>
