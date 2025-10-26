@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
 import useApps from "./Hooks/useApps";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import { Bar, BarChart, CartesianGrid, Legend,  ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import Loading from "./Loading";
+
 
 const AppsDetailes = () => {
   const [disabled, setDisabled] = useState(false);
   const { id } = useParams();
   const appid = parseInt(id);
-  const { Apps, loading, error } = useApps();
-  if (loading) return <p>loading....</p>;
+  const { Apps, loading} = useApps();
+  if (loading) return <Loading></Loading>
   const App = Apps.find((app) => app.id === appid);
-  const { image, downloads, title, ratingAvg, companyName, reviews } = App;
+  const { image, downloads, title, ratingAvg, companyName, reviews, ratings,description } =
+    App;
 
   const hendleAddtoInstallation = () => {
     setDisabled(true);
-    toast("done");
+    toast(`${title} install successfull `);
     const existingList = JSON.parse(localStorage.getItem("install"));
     let updatedList = [];
     if (existingList) {
@@ -46,7 +50,7 @@ const AppsDetailes = () => {
                 alt=""
               />
               <p>Downloads</p>
-              <h1 className="font-bold text-5xl">{downloads}</h1>
+              <h1 className="font-bold text-5xl">{downloads}M</h1>
             </div>
             <div className="mt-5 md:mt-0">
               <img
@@ -73,7 +77,35 @@ const AppsDetailes = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
+
+      <div className="space-y-3">
+        <h1 className="text-2xl font-bold">Ratings</h1>
+        <div className=" rounded-xl p-4 h-80">
+       <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+   
+        data={ratings}
+       
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend/>
+        <Bar dataKey="count"  fill="#82ca9d"  />
+        
+      </BarChart>
+    </ResponsiveContainer>
+        </div>
+
+      </div>
+
+      <div >
+        <h1 className="text-4xl font-bold mb-4">description</h1>
+        <p className="text-gray-500">{description}</p>
+      </div>
+
+      
     </div>
   );
 };

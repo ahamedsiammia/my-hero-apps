@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from "react";
 import InstaledApp from "../Component/InstaledApp";
-
 const Installation = () => {
     const [Sort , setSort]=useState('');
   const [instaled, setInstaled] = useState([]);
-
+  
+    
+  
 
   useEffect(() => {
+    
     const installation = JSON.parse(localStorage.getItem("install"));
     if (installation) setInstaled(installation);
+    
   }, []);
 
   const hendleSort = (type) =>{
     setSort(type)
-    if(type === 'High to low'){
-      return [...instaled].sort((a,b) => a.downloads-b.downloads)
+    console.log(type)
+    if(type === "High to low"){
+      const higerSort = [...instaled].sort((a,b) => b.downloads-a.downloads);
+      console.log(higerSort)
+      setInstaled(higerSort)
         
     }
-    else if(type === 'low to high'){
-       return [...instaled].sort((a,b) => b.downloads-a.downloads) 
+    else if(type === "Low to high"){
+       const lowerSort = [...instaled].sort((a,b) => a.downloads-b.downloads);
+       console.log(lowerSort)
+       setInstaled(lowerSort)
     }
     else{
         return instaled
     }
   }
+
 
   return (
     <div>
@@ -34,14 +43,14 @@ const Installation = () => {
         </p>
       </div>
 
-      <div className="flex justify-between py-5 items-center">
+      <div className="flex  justify-between py-5 items-center">
         <h1 className="text-2xl font-semibold">
           <span>({instaled.length})</span>Apps Found
         </h1>
         <div>
           <details className="dropdown">
             <summary className="btn m-1"> {Sort ? Sort:"Sort By Size"}</summary>
-            <ul className="menu dropdown-content bg-base-100 rounded-box z-1 md:w-52 p-2 shadow-sm">
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-1  md:w-30  p-2 shadow-sm">
               <li>
                 <a onClick={() =>  hendleSort("High to low")}>High to low</a>
               </li>
@@ -52,12 +61,14 @@ const Installation = () => {
           </details>
         </div>
       </div>
+      
 
       <div>
         {instaled.map((instal) => (
-          <InstaledApp key={instal.id} instal={instal}></InstaledApp>
+          <InstaledApp key={instal.id} setInstaled={setInstaled} instal={instal}></InstaledApp>
         ))}
       </div>
+      
     </div>
   );
 };

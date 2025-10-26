@@ -20,7 +20,7 @@ const AppCard = ({app}) => {
             <div className='flex justify-between items-center px-4 mb-4'>
                 <div className='badge bg-[#F1F5E8] text-[#00D390]'>
                     <PiDownloadSimple className='w-[16px] h-[16px] text-[#54CF68]'></PiDownloadSimple>
-                    {downloads}
+                    {downloads}M
                 </div>
                 <div className='badge bg-[#FFF0E1] text-[#FF8811]'>
                     <FaStar className='w-[16px] h-[16px] text-[#FF8811]'></FaStar>

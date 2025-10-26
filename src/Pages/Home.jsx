@@ -4,6 +4,7 @@ import AppCard from "../Component/AppCard";
 import useApps from "./Hooks/useApps";
 import Banner from "../Component/Banner";
 import Trusted from "../Component/Trusted";
+import Loading from "./Loading";
 
 const Home = () => {
   const { Apps, loading, error } = useApps();
@@ -29,6 +30,7 @@ const Home = () => {
           </button>
         </Link>
       </div>
+      {loading && <Loading></Loading>}
     </div>
   );
 };

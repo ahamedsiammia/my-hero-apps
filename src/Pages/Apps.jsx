@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import useApps from "./Hooks/useApps";
 import AppCard from "../Component/AppCard";
+import Loading from "./Loading";
 
 const Apps = () => {
-    const { Apps } = useApps();
+    const { Apps ,loading} = useApps();
     const [search,setSearch]=useState('');
     const term = search.trim().toLocaleLowerCase();
     const searchAppes = search ? Apps.filter(App => App.title.toLocaleLowerCase().includes(term)): Apps
@@ -48,6 +49,7 @@ const Apps = () => {
           <AppCard key={app.id} app={app}></AppCard>
         ))}
       </div>
+      {loading && <Loading></Loading>}
     </div>
   );
 };

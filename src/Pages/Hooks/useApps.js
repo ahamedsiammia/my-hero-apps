@@ -14,7 +14,7 @@ const useApps = () =>{
         .finally(()=> setLoading(false))
     },[])
 
-    return {Apps,loading,error}
+    return {Apps,loading,error,setLoading}
 }
 
 export default useApps;
